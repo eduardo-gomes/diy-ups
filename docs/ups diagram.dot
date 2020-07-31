@@ -1,0 +1,44 @@
+digraph power{
+	rankdir=LR;
+	"AC input" -> "charger" -> "battery" -> "inverter" -> "relay" -> "AC out";
+	"AC input" -> "relay";
+}
+
+digraph ups {
+	rankdir=LR;
+	charger [label="Power Supply", shape="square"]
+	battery [label="Battery\nWith Voltage sensor", shape="square"]
+	inverter [label="Inverter", shape="square"]
+	acOut [label="AC Output"]
+	acIn [label="AC Input"]
+
+	acIn -> charger [label="(OPT)Current sensor"];
+	inverter -> acOut [label="(OPT)Current sensor"];
+
+	charger -> battery [label="Current sensor"];
+	battery -> inverter [label="Current sensor"];
+	
+}
+
+digraph Controller{
+	rankdir=LR
+	splines=polyline
+	controller [label="Microcontroller"]
+	charger [label="Power Supply", shape="square"]
+	inverter [label="Inverter", shape="square"]
+	battery [label="Battery", shape="square"]
+
+
+	controller -> charger [label="Voltage control"]
+	charger -> controller [label="I measure"]
+	charger -> controller [label="(OPT) I in measure"]
+
+	inverter -> controller [label="I In measure"]
+	inverter -> controller [label="(OPT) I out  measure"]
+	controller -> inverter [label="Power"]
+
+	battery -> controller [label="Voltage measure"]
+	battery -> controller [label="Current measure"]
+	controller -> battery [style = invis]//Topological sorting
+
+}
