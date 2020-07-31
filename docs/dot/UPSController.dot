@@ -5,6 +5,7 @@ digraph UPSController{
 	charger [label="Power Supply", shape="square"];
 	inverter [label="Inverter", shape="square"];
 	battery [label="Battery", shape="square"];
+	relay [label="Relay", shape="square"];
 
 
 	controller -> charger [label="Voltage control"];
@@ -18,5 +19,7 @@ digraph UPSController{
 
 	battery -> controller [label="Voltage measure"];
 	battery -> controller [label="Current measure"];
-	controller -> battery [style = invis]//Topological sorting
+	controller -> battery [style = invis];//Topological sorting
+
+	controller -> relay [label="Bypass"];
 }
