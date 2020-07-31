@@ -1,0 +1,15 @@
+digraph ups {
+	rankdir=LR;
+	charger [label="Power Supply", shape="square"];
+	battery [label="Battery\nWith Voltage sensor", shape="square"];
+	inverter [label="Inverter", shape="square"];
+	acOut [label="AC Output"];
+	acIn [label="AC Input"];
+
+	acIn -> charger [label="(OPT)Current sensor"];
+	inverter -> acOut [label="(OPT)Current sensor"];
+
+	charger -> battery [label="Current sensor"];
+	battery -> inverter [label="Current sensor"];
+	
+}

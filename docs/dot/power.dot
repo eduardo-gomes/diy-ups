@@ -1,0 +1,18 @@
+digraph power{
+	rankdir=LR;
+
+	ACin [label="AC input"];
+	ACout [label="AC out"];
+	charger [label="charger"];
+	battery [label="battery"];
+	inverter [label="inverter"];
+	relay [label="relay"];
+	
+	subgraph cluster_ups{
+		charger -> battery -> inverter -> relay;
+		label=UPS;
+	}
+	ACin -> charger
+	relay -> ACout;
+	ACin -> relay;
+}

@@ -1,0 +1,22 @@
+digraph UPSController{
+	rankdir=LR;
+	splines=polyline;
+	controller [label="Microcontroller"];
+	charger [label="Power Supply", shape="square"];
+	inverter [label="Inverter", shape="square"];
+	battery [label="Battery", shape="square"];
+
+
+	controller -> charger [label="Voltage control"];
+	charger -> controller [label="I measure"];
+	charger -> controller [label="(OPT) I in measure"];
+
+	inverter -> controller [label="I In measure"];
+	inverter -> controller [label="(OPT) I out  measure"];
+	inverter -> controller [label="(OPT) V out  measure"];
+	controller -> inverter [label="Power on/off"];
+
+	battery -> controller [label="Voltage measure"];
+	battery -> controller [label="Current measure"];
+	controller -> battery [style = invis]//Topological sorting
+}
