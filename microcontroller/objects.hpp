@@ -43,5 +43,6 @@ class inverter {
 	ACvoltage_t out_voltage;  //Optional
 
 	void set_output(bool active);
+	DCpower_t calc_input_power();
 	ACpower_t calc_output_power();	//-1 means unavaliable
 };
