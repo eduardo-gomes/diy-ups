@@ -9,8 +9,8 @@ digraph UPSController{
 
 
 	controller -> charger [label="Voltage control"];
-	charger -> controller [label="I measure"];
-	charger -> controller [label="(OPT) I in measure"];
+	charger -> controller [label="I out measure"];
+	charger -> controller [label="(OPT) Power in measure"];
 
 	inverter -> controller [label="I In measure"];
 	inverter -> controller [label="(OPT) I out  measure"];
