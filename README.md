@@ -1,3 +1,6 @@
+# This will turn into an DC ups
+DC because it's more efficient, cheaper and it will be easy to power up a computer with an buck converter when it use atx12vo
+
 # diy-ups
 A diy double conversion ups
 
